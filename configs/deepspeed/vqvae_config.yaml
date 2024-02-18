@@ -1,0 +1,43 @@
+ckpt_path: "/zecheng2/vqllama/vqllama_quantizer/version_12/checkpoints/last.ckpt"
+
+vqvae:
+  levels: 2
+  downs_t: [1, 1]
+  strides_t: [2, 2]
+  emb_width: 1024
+  l_bins: 4096
+  l_mu: 0.99
+  spectral: 0.0
+  multispectral: 1.0
+  hvqvae_multipliers: [2, 1, 1]
+  loss_fn: 'l2'
+  dilation_growth_rate: 1
+  use_nonrelative_specloss: True
+  use_bottleneck: True
+  commit: 1.0
+  recon: 1.0
+  linf_k: 2048
+  use_modified_block: False
+  
+vqvae_conv_block:
+  depth: 4
+  width: 512
+  m_conv: 1.0
+  dilation_growth_rate: 1
+  dilation_cycle: null
+  vqvae_reverse_decoder_dilation: True
+
+dataset: 
+  max_path_nums: 512
+  min_path_nums: 4
+  pad_token_id: 0
+  train_batch_size: 128
+  val_batch_size: 32
+  nworkers: 16
+  pin_memory: False
+  x_channels: 9
+  inference_mode: False
+  vocab_size: 200  # max number
+  return_all_token_mask: False
+  num_bins: 9
+  remove_redundant_col: False  # remove the 2nd and 3rd coloumns
